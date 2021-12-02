@@ -5,29 +5,19 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="../../resourcers/css/login.css">
-        <style>
-            body{
-                background-color: red;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="./pages/css/login.css">
         <title>Login</title>
     </head>
     <body>
-        <h1>Login</h1>
-        <form action="login" method="POST">
-            <label>
-                Username:<input type="text" name="username">
-            </label>
-            <br/><br/>
-            <label>
-                Password:<input type="text" name="password">
-            </label>
-            <br/><br/>
+        <form id="login" action="login" method="POST">
+            <h1>Login</h1>
+            <input type="text" name="username" placeholder="Usuario">
+            <input type="password" name="password" placeholder="Senha">
             <input type="submit" value="Entrar">
         </form>
     </body>

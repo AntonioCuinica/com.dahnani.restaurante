@@ -6,15 +6,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Welcome to Spring Web MVC project</title>
-         <link type="text/css" rel="stylesheet" href="../../resourcers/css/index.css">
+        <link rel="stylesheet" type="text/css" href="./pages/css/index.css">
     </head>
 
     <body>
-        <p>Bem vindo ao Dahnani restaurante!!!</p>
-        <p><i>To display a different welcome page for this project, modify</i>
-            <tt>index.jsp</tt> <i>, or create your own welcome page then change
-                the redirection in</i> <tt>redirect.jsp</tt> <i>to point to the new
-                welcome page and also update the welcome-file setting in</i>
-            <tt>web.xml</tt>.</p>
+        <h1>Bem vindo ao Dahnani restaurante!!!</h1>
     </body>
 </html>

@@ -6,48 +6,48 @@
 package filters;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-
-
-
+import model.DAO.Conexao;
 /**
  *
  * @author CUINIC4
  */
-@WebFilter(urlPatterns={"/redirect.jsp"})
-public class doLogin implements Filter {
+@WebFilter(urlPatterns={"/*"})
+public class doConexao implements Filter {
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        
     }
 
+    
+    
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        boolean temAcesso=false;
-        try{
-            temAcesso =(boolean)request.getAttribute("temAcesso");
-        }catch(NullPointerException e){
-            temAcesso=false;
-        }
-        if(!temAcesso){
-            RequestDispatcher rs=request.getRequestDispatcher("./WEB-INF/jsp/login.jsp");
-            rs.forward(request, response);
-            chain.doFilter(request, response);
-        }
         
+        try {
+            Connection con=new Conexao().getConexao();
+            request.setAttribute("conexao", con);
+            chain.doFilter(request, response);
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(doConexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
+    
+    
     @Override
     public void destroy() {
-        
     }
-
     
 }
