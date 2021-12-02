@@ -9,8 +9,7 @@ package model.entity;
  *
  * @author CUINIC4
  */
-public class Prato implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Prato{
     private Integer idprato;
     private String nome;
     private String quantidade;

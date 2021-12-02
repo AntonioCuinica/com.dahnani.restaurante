@@ -12,14 +12,29 @@ import java.util.Date;
  * @author CUINIC4
  */
 public class Conta  {
-    private static final long serialVersionUID = 1L;
+    private int idconta;
     private Date data;
     private Double precoTodal;
-    private Integer nrPedidos;
+    private int nrPedidos;
     private Factura facturaIdfactura;
-    private RequisitarPedido requisitarPedido;
 
     public Conta() {
+    }
+
+    public int getIdconta() {
+        return idconta;
+    }
+
+    public void setIdconta(int idconta) {
+        this.idconta = idconta;
+    }
+
+    public int getNrPedidos() {
+        return nrPedidos;
+    }
+
+    public void setNrPedidos(int nrPedidos) {
+        this.nrPedidos = nrPedidos;
     }
 
     public Date getData() {
@@ -38,14 +53,6 @@ public class Conta  {
         this.precoTodal = precoTodal;
     }
 
-    public Integer getNrPedidos() {
-        return nrPedidos;
-    }
-
-    public void setNrPedidos(Integer nrPedidos) {
-        this.nrPedidos = nrPedidos;
-    }
-
     public Factura getFacturaIdfactura() {
         return facturaIdfactura;
     }
@@ -54,19 +61,10 @@ public class Conta  {
         this.facturaIdfactura = facturaIdfactura;
     }
 
-    public RequisitarPedido getRequisitarPedido() {
-        return requisitarPedido;
-    }
-
-    public void setRequisitarPedido(RequisitarPedido requisitarPedido) {
-        this.requisitarPedido = requisitarPedido;
-    }
-
    
-
     @Override
     public String toString() {
-        return "model.entity.Conta[ contaPK=" + contaPK + " ]";
+        return "model.entity.Conta[ contaPK=" + idconta + " ]";
     }
     
 }

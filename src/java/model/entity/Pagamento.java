@@ -13,7 +13,7 @@ import java.util.Date;
  * @author CUINIC4
  */
 public class Pagamento  {
-    private static final long serialVersionUID = 1L;
+    private int idpagamento;
     private Double valor;
     private Date data;
     private Factura factura;
@@ -22,6 +22,15 @@ public class Pagamento  {
     public Pagamento() {
     }
 
+    public int getIdpagamento() {
+        return idpagamento;
+    }
+
+    public void setIdpagamento(int idpagamento) {
+        this.idpagamento = idpagamento;
+    }
+    
+    
 
     public Double getValor() {
         return valor;
@@ -58,7 +67,7 @@ public class Pagamento  {
 
     @Override
     public String toString() {
-        return "model.entity.Pagamento[ pagamentoPK=" + pagamentoPK + " ]";
+        return "model.entity.Pagamento[ pagamentoPK=" + idpagamento + " ]";
     }
     
 }
