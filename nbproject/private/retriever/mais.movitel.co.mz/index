@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8">
+<meta name="fragment" content="!">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSRF Token -->
+<meta name="csrf-token" content="kFH0VocihbfggxdofVf8sMN9G2uhtyCYKRVBOWLb">
+<meta name="description" content="We are a Mozambican company with presence in all 13 provinces of the country offering services and telecommunications products to diverse and different social strata, with responsibility, independence and commitment.">
+
+<title>Movitel</title>
+
+<base href="/">
+
+<!-- Styles -->
+<link href="https://mais.movitel.co.mz/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://mais.movitel.co.mz/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://mais.movitel.co.mz/css/datepicker.css" rel="stylesheet">
+<link href="https://mais.movitel.co.mz/slick/slick.css" rel="stylesheet">
+<link href="https://mais.movitel.co.mz/slick/slick-theme.css" rel="stylesheet">
+<link href="https://mais.movitel.co.mz/css/sweetalert.css" rel="stylesheet">
+<link href="https://mais.movitel.co.mz/themes/movitel/css/main.css" rel="stylesheet">
+<link href="https://mais.movitel.co.mz/css/custom.css" rel="stylesheet">
+<link href="https://mais.movitel.co.mz/css/loading-bar.min.css" rel="stylesheet" />
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<script src="https://mais.movitel.co.mz/js/angular.min.js"></script>
+<script src="https://mais.movitel.co.mz/js/angular-route.min.js"></script>
+<script src="https://mais.movitel.co.mz/js/angular-sanitize.min.js"></script>
+<script src="https://mais.movitel.co.mz/js/angular-animate.min.js"></script>
+<script src="https://mais.movitel.co.mz/js/loading-bar.min.js"></script>
+<script src="https://mais.movitel.co.mz/js/angular-cache.min.js"></script>
+
+<script src="https://mais.movitel.co.mz/js/jquery-3.2.1.min.js"></script>
+<script src="https://mais.movitel.co.mz/js/bootstrap.min.js"></script>
+<script src="https://mais.movitel.co.mz/slick/slick.js"></script>
+<script src="https://mais.movitel.co.mz/sliderengine/amazingslider.js"></script>
+<link href="https://mais.movitel.co.mz/sliderengine/amazingslider.css">
+
+<script src="https://mais.movitel.co.mz/js/lang.js"></script>
+
+<!-- Scripts -->
+<script>
+    window.App = {"csrfToken":"kFH0VocihbfggxdofVf8sMN9G2uhtyCYKRVBOWLb","baseUrl":"https:\/\/movitel.co.mz","baseGatewayApiUrl":"api","gatewayApiUrl":"api\/CoreService\/UserRouting","siteCode":"movitel","themePath":"\/themes\/movitel","prefix":"258","appCode":"VPORTAL","appName":"Movitel","siteType":"Personal","domain":"https:\/\/vietnam.viettel.com.vn","currency":"MZN","localLangCode":null,"captchaSrc":"https:\/\/mais.movitel.co.mz\/captcha\/default?ELyiOy3m","locale":"pt","language":"LC","locales":{"pt":"Portuguese","en":"English"},"chatUrl":"https:\/\/coreapi.viettelglobal.net"};
+</script>
+</head>
+<body ng-app="app" ng-cloak>
+	<!--
+  <script type="text/javascript">
+                      function loadJsAsync(src, callback) {
+                                      var s = document.createElement('script');
+                                      s.type = "text/javascript";
+                                      s.src = src;
+                                      s.addEventListener('load', function (e) { callback(null, e); }, false);
+                                      var head = document.getElementsByTagName('head')[0];
+                                      head.appendChild(s);
+                      }
+                      window.onload = function() {
+                              loadJsAsync('https://myccpublic.movitel.co.mz/assets//js/IpccChat.js', function() {
+                                var IpccChat = {
+                                            domain:'e9162435-9c33-4139-8130-6599603f5500',
+                                                      username: '', url: 'https://myccpublic.movitel.co.mz/'
+                                };
+                        embedIpccChat(IpccChat);
+                                })
+                      };
+                  </script>
+                -->
+                
+
+<!--
+<div class="fb-customerchat"
+page_id="544582605578887"
+minimized="true">
+</div>
+<script>
+window.fbAsyncInit = function() {
+FB.init({
+appId : '424049351666570',
+autoLogAppEvents : true,
+xfbml : true,
+version : 'v2.11'
+});
+};
+(function(d, s, id){
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) {return;}
+js = d.createElement(s); js.id = id;
+ js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+-->
+
+
+
+    <div ng-controller="AppController">
+        <div ng-controller="HeaderController">
+    <!--___________________________________________________HEADER______________________________________________________________-->
+    <div class="row nat-header no-margin {{ (app.siteCode == 'movitel') ? 'movitel-only' : '' }}">
+        <div class="container">
+            <div class="nat-header-left-block">
+                <a href="https://mais.movitel.co.mz">
+                    <img ng-src="{{ themePath('/images/logo3.png') }}" />
+                </a>
+                <div>
+                    <a ng-click="changeSiteType('Personal')" class="action-link {{ app.siteType == 'Personal' && ! isCareerPage ? 'active' : '' }}">{{ t('Personal') }}</a>
+                    <a ng-click="changeSiteType('Enterprise')" class="action-link {{ app.siteType == 'Enterprise' && ! isCareerPage ? 'active' : '' }}">{{ t('Enterprise') }}</a>
+                    <!-- <a href="https://mais.movitel.co.mz/careers" class="{{ isCareerPage ? 'active' : '' }}">{{ t('Careers') }}</a> -->
+                </div>
+            </div>
+            <div class="nat-header-right-block">
+                <div class="nat-main-search">
+                    <input type="text" class="form-control" placeholder="{{ t('Search') }}..." ng-model="searchForm.keyword" on-key-enter="search()">
+                    <button class="btn" title="{{ t('Search') }}">
+                        <i class="fa fa-search"></i>
+                    </button>
+                    <button class="btn nat-main-search-btn-open-searchbox" title="{{ t('Search') }}">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <div class="dropdown nat-header-lang-new">
+                    <a href="javascript:void(0)" data-toggle="dropdown">
+                        {{ t(app.locales[app.locale]) }}
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="(k, v) in app.locales">
+                            <a class="action-link" ng-click="setLocale(k)">{{ t(v) }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="javascript:void(0)" class="nat-header-lang-new hidden">{{ app.locale }}</a>
+
+                <a ng-if="! auth.check" class="nat-header-login action-link" data-toggle="modal" ng-click="showLoginModal()">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <span>{{ t('Login') }}</span>
+                </a>
+
+                <div uib-dropdown class="dropdown nat-header-logged" ng-if="auth.check">
+                    <a uib-dropdown-toggle class="dropdown-toggle" role="button" aria-expanded="false">
+                        <img ng-src="{{ auth.user.avatar_url }}" />
+                    </a>
+
+                    <ul uib-dropdown-menu class="dropdown-menu nat-header-logged-dropdown" role="menu">
+                        <li class="nat-header-logged-dropdown-main">
+                            <a class="action-link" data-toggle="dropdown">
+                                <img ng-src="{{ auth.user.avatar_url }}" />
+                            </a>
+                            <span>{{ t('Welcome') }}, {{ auth.user.name }}</span>
+                        </li>
+                        <li class="arrow"></li>
+                        <li>
+                            <a class="action-link" ng-click="showChangePasswordModal()">
+                                <i class="fa fa-exchange"></i>
+                                <span>{{ t('Change Password') }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="action-link" ng-click="logout()">
+                                <i class="fa fa-power-off"></i>
+                                <span>{{ t('Logout') }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <a class="nat-header-mobile-menu action-link" ng-click="toggleNatMobileMenu()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!--__________________________________________________MAIN MENU__________________________________________________________-->
+    <div class="row nat-main-menu no-margin {{ (app.siteCode == 'movitel') ? 'movitel-only' : '' }}">
+        <div class="container">
+            <div class="nat-main-menu-content" ng-if="! isCareerPage">
+                <a href="https://mais.movitel.co.mz" class="{{ currentPath == '/' ? 'active' : '' }}"><i class="fa fa-home"></i></a>
+                <span ng-repeat="item in app.headerMenus">
+                    <div class="dropdown" ng-if="item.arr.length > 0">
+                        <a ng-href="{{ url(item.url) }}" class="{{ (currentPath.indexOf(item.code) != -1 || currentPath == item.url) ? 'active' : '' }}">{{ item.value }}</a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="subMenu in item.arr">
+                                <a ng-href="{{ url(subMenu.url) }}">
+                                    {{ subMenu.value }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a ng-href="{{ url(item.url) }}" ng-if="item.arr.length == 0" class="{{ (currentPath.indexOf(item.code) != -1 || currentPath == item.url) ? 'active' : '' }}">{{ item.value }}</a>
+                </span>
+            </div>
+
+            <!-- <div class="nat-main-menu-content" ng-if="isCareerPage">
+                <a href="/careers" class="{{ currentPath == '/careers' ? 'active' : '' }}"><i class="fa fa-home"></i></a>
+                <a href="/careers/about-us" class="{{ currentPath == '/careers/about-us' ? 'active' : '' }}">{{ t('About us') }}</a>
+                <a href="/careers/why-viettel" class="{{ currentPath == '/careers/why-viettel' ? 'active' : '' }}">{{ t('Why Viettel') }}</a>
+                <a href="/careers/jobs" class="{{ currentPath == '/careers/jobs' ? 'active' : '' }}">{{ t('Careers') }}</a>
+                <a href="/careers/my-profile" class="{{ currentPath == '/careers/my-profile' ? 'active' : '' }}">{{ t('My profile') }}</a>
+            </div> -->
+        </div>
+    </div>
+
+    <!--__________________________________________________MOBILE MENU________________________________________________________________-->
+    <div class="nat-mobile-menu" id="nat-mobile-menu">
+    <a id="tab-sitetype-Personal" class="nat-mobile-menu-collapse-btn action-link {{ isCollapsed['Personal'] || isCareerPage ? 'collapsed' : '' }}" data-toggle="collapse" ng-click="switchMenu('Personal')">
+        {{ t('Personal') }}
+        <i class="fa fa-angle-down"></i>
+    </a>
+    <div uib-collapse="isCollapsed['Personal'] || isCareerPage" class="nat-mobile-menu-body row tab-pane" id="nat-sitetype-Personal">
+        <div class="container" ng-if="app.siteType == 'Personal'">
+            <a ng-repeat="item in app.headerMenus" ng-click="clickMobileMenu(item)" class="action-link {{ (currentPath.indexOf(item.code) != -1 || currentPath == item.url) ? 'active' : '' }}">{{ item.value }}</a>
+        </div>
+    </div>
+
+    <a id="tab-sitetype-Enterprise" class="nat-mobile-menu-collapse-btn action-link {{ isCollapsed['Enterprise'] || isCareerPage ? 'collapsed' : '' }}" data-toggle="collapse" ng-click="switchMenu('Enterprise')">
+        {{ t('Enterprise') }}
+        <i class="fa fa-angle-down"></i>
+    </a>
+    <div uib-collapse="isCollapsed['Enterprise'] || isCareerPage" class="nat-mobile-menu-body row tab-pane" id="nat-sitetype-Enterprise">
+        <div class="container" ng-if="app.siteType == 'Enterprise'">
+            <a ng-repeat="item in app.headerMenus" ng-click="clickMobileMenu(item)" class="action-link {{ (currentPath.indexOf(item.code) != -1 || currentPath == item.url) ? 'active' : '' }}">{{ item.value }}</a>
+        </div>
+    </div>
+</div>
+
+    <!--__________________________________________________HEADER POPUP - LOGIN_______________________________________________________-->
+    <!-- Modal -->
+<div class="modal fade nat-common-popup nat-input-popup nat-login-popup" id="nat-login-popup">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <i class="fa fa-close" aria-hidden="true"></i>
+                </button>
+                <h4 class="modal-title">{{ t('Login') }}</h4>
+            </div>
+            <div class="modal-body row no-margin">
+                <div class="col-xs-12 no-padding margin-bottom-15" ng-show="loginForm.errors.length > 0">
+                    <label class="col-sm-3 col-xs-12"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <ul class="nat-input-popup-error-msg">
+                            <li ng-repeat="error in loginForm.errors">{{ t(error) }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <form role="form" method="POST">
+                    <div class="col-xs-12 no-padding margin-bottom-15">
+                        <label class="col-sm-3 col-xs-12 no-padding-right">
+                            {{ t('Method') }}
+                            <span>*</span>
+                        </label>
+                        <div class="col-sm-8 col-xs-12">
+                            <select class="form-control" ng-model="loginForm.method">
+                                <option value="password">{{ t('Use password') }}</option>
+                                <option value="otp">{{ t('Use OTP') }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 no-padding margin-bottom-15">
+                        <label class="col-sm-3 col-xs-12">
+                            {{ t('ISDN/Account') }}
+                            <span>*</span>
+                        </label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="loginForm.username" placeholder="{{ t('ISDN/Account') }}" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div ng-show="loginForm.method == 'password'">
+                        <div class="col-xs-12 no-padding margin-bottom-20">
+                            <label class="col-sm-3 col-xs-12">
+                                {{ t('Password') }}
+                                <span>*</span>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="password" class="form-control" ng-model="loginForm.password" placeholder="{{ t('Password') }}" autocomplete="off" />
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-sm-offset-3 col-xs-12 margin-bottom-15">
+                            <button class="btn btn-nat-input-popup-bottom margin-bottom-10" ng-click="login()" ng-disabled="loginForm.busy">
+                                {{ t('Login') }}
+                            </button>
+                            <div>
+                                <a class="nat-login-forgot-password action-link" ng-click="showForgotPassword()">{{ t('Forgot your password') }}</a>
+                                <a class="nat-login-forgot-password action-link" ng-click="showRegisterModal('ADSL', 'password')">{{ t('Register') }}</a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="loginForm.method == 'otp'">
+                        <div class="col-xs-12 no-padding margin-bottom-20">
+                            <label class="col-sm-3 col-xs-12 no-padding-right">
+                                {{ t('OTP') }}
+                                <span>*</span>
+                            </label>
+                            <div class="col-sm-5 col-xs-8">
+                                <input type="text" class="form-control" ng-model="loginForm.otp" placeholder="{{ t('OTP') }}" />
+                            </div>
+                            <div class="col-sm-3 col-xs-4 nat-register-otp-popup-short-column">
+                                <a class="btn" ng-click="getOtp(loginForm.username)">{{ t('Get OTP') }}</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-sm-offset-3 col-xs-12 margin-bottom-15">
+                            <button class="btn btn-nat-input-popup-bottom margin-bottom-10" ng-click="loginOtp()" ng-disabled="loginForm.busy">
+                                {{ t('Login') }}
+                            </button>
+                            <div>
+                                <a class="nat-login-forgot-password action-link" ng-click="showForgotPassword()">{{ t('Forgot your password') }}</a>
+                                <a class="nat-login-forgot-password action-link" ng-click="showRegisterModal('ADSL', 'password')">{{ t('Register') }}</a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--__________________________________________________HEADER POPUP - REGISTER - ADSL_______________________________________________________-->
+    <!-- Modal -->
+<div class="modal fade nat-common-popup nat-input-popup nat-register-adsl-popup" id="nat-register-popup">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <i class="fa fa-close" aria-hidden="true"></i>
+                </button>
+                <h4 class="modal-title">{{ t('Register') }}</h4>
+            </div>
+            <div class="modal-body row no-margin">
+                <div class="col-xs-12 no-padding margin-bottom-15" ng-show="registerForm.errors.length > 0">
+                    <label class="col-sm-3 col-xs-12"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <ul class="nat-input-popup-error-msg">
+                            <li ng-repeat="error in registerForm.errors">{{ error }}</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                
+                <div ng-if="!showOptInput">
+                    <div class="col-xs-12 no-padding margin-bottom-15">
+                        <label class="col-sm-3 col-xs-12 no-padding-right">
+                            {{ t('My number') }}
+                            <span>*</span>
+                        </label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="registerForm.username"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 no-padding margin-bottom-20">
+                        <label class="col-sm-3 col-xs-12 no-padding-right">
+                            {{ t('Password') }}
+                            <span>*</span>
+                        </label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="password" class="form-control" ng-model="registerForm.password" id="password"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 no-padding margin-bottom-20">
+                        <label class="col-sm-3 col-xs-12 no-padding-right">
+                            {{ t('Confirm password') }}
+                            <span>*</span>
+                        </label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="password" class="form-control" ng-model="registerForm.password_confirmation"/>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-8 col-sm-offset-3 col-xs-12">
+                        <button class="btn btn-nat-input-popup-bottom" ng-click="register()"
+                                ng-disabled="registerForm.busy">{{ t('Register') }}
+                        </button>
+                    </div>
+                </div>
+                <div ng-if="showOptInput">
+                    <div class="col-xs-12 no-padding margin-bottom-15">
+                        <label class="col-sm-3 col-xs-12 no-padding-right">
+                            {{ t('OTP') }}
+                            <span>*</span>
+                        </label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="registerForm.otp"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-sm-offset-3 col-xs-12">
+                        <button class="btn btn-nat-input-popup-bottom" ng-click="register2()">{{ t('ỌK') }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function passwordStrength(password) {
+
+        var desc = [{'width': '0px'}, {'width': '20%'}, {'width': '40%'}, {'width': '60%'}, {'width': '80%'}, {'width': '100%'}];
+
+        var descClass = ['', 'progress-bar-danger', 'progress-bar-danger', 'progress-bar-warning', 'progress-bar-success', 'progress-bar-success'];
+
+        var score = 0;
+
+        //if password bigger than 6 give 1 point
+        if (password.length > 6) score++;
+
+        //if password has both lower and uppercase characters give 1 point
+        if ((password.match(/[a-z]/)) && (password.match(/[A-Z]/))) score++;
+
+        //if password has at least one number give 1 point
+        if (password.match(/d+/)) score++;
+
+        //if password has at least one special caracther give 1 point
+        if (password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/)) score++;
+
+        //if password bigger than 12 give another 1 point
+        if (password.length > 10) score++;
+
+        // display indicator
+        $("#jak_pstrength").removeClass(descClass[score - 1]).addClass(descClass[score]).css(desc[score]);
+    }
+
+    $(document).ready(function () {
+        $("#password").keyup(function () {
+            passwordStrength($(this).val());
+        });
+    });
+</script>
+
+    <!--__________________________________________________HEADER POPUP - CHANGE PASWORD_______________________________________________________-->
+    <!-- Modal -->
+<div class="modal fade nat-common-popup nat-input-popup nat-change-password-popup" id="nat-change-password-popup">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <i class="fa fa-close" aria-hidden="true"></i>
+                </button>
+                <h4 class="modal-title">{{ t('Change password') }}</h4>
+            </div>
+            <div class="modal-body row no-margin">
+                <div class="col-xs-12 no-padding margin-bottom-15" ng-show="changePasswordForm.errors.length > 0">
+                    <label class="col-sm-4 col-xs-12"></label>
+                    <div class="col-sm-8 col-xs-12">
+                        <ul class="nat-input-popup-error-msg">
+                            <li ng-repeat="error in changePasswordForm.errors">{{ t(error) }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 no-padding margin-bottom-20">
+                    <label class="col-sm-4 col-xs-12">
+                        {{ t('Current password') }}
+                        <span>*</span>
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="password" class="form-control" ng-model="changePasswordForm.current_password" />
+                    </div>
+                </div>
+                <div class="col-xs-12 no-padding margin-bottom-20">
+                    <label class="col-sm-4 col-xs-12">
+                        {{ t('New password') }}
+                        <span>*</span>
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="password" class="form-control" ng-model="changePasswordForm.password" />
+                    </div>
+                </div>
+                <div class="col-xs-12 no-padding margin-bottom-20">
+                    <label class="col-sm-4 col-xs-12">
+                        {{ t('Confirm password') }}
+                        <span>*</span>
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="password" class="form-control" ng-model="changePasswordForm.password_confirmation" />
+                    </div>
+                </div>
+                <div class="col-sm-8 col-sm-offset-4 col-xs-12 margin-bottom-15">
+                    <button class="btn btn-nat-input-popup-bottom" ng-click="changePassword()" ng-disabled="changePasswordForm.busy">{{ t('Change password') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Modal -->
+<div class="modal fade nat-common-popup nat-input-popup nat-register-adsl-popup" id="nat-forgotpassword-popup">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <i class="fa fa-close" aria-hidden="true"></i>
+                </button>
+                <h4 class="modal-title">{{ t('Forgot your password') }}</h4>
+            </div>
+            <div class="modal-body row no-margin">
+                <div class="col-xs-12 no-padding margin-bottom-15" ng-show="forgotPassword.errors.length > 0">
+                    <label class="col-sm-3 col-xs-12"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <ul class="nat-input-popup-error-msg">
+                            <li ng-repeat="error in forgotPassword.errors">{{ error }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div ng-if="!forgotPassword.showOptInput">
+                    <div class="col-xs-12 no-padding margin-bottom-15">
+                        <label class="col-sm-3 col-xs-12 no-padding-right">
+                            {{ t('My Movitel number') }}
+                            <span>*</span>
+                        </label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="forgotPassword.username"/>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-8 col-sm-offset-3 col-xs-12">
+                        <button class="btn btn-nat-input-popup-bottom" ng-click="forgotpasswordGetOtp()"
+                                ng-disabled="forgotPassword.busy">{{ t('OK') }}
+                        </button>
+                    </div>
+                </div>
+                <div ng-if="forgotPassword.showOptInput">
+                    <div class="col-xs-12 no-padding margin-bottom-15">
+                        <label class="col-sm-3 col-xs-12 no-padding-right">
+                            {{ t('OTP') }}
+                            <span>*</span>
+                        </label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="forgotPassword.otp"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-sm-offset-3 col-xs-12">
+                        <button class="btn btn-nat-input-popup-bottom" ng-click="forgotpassword()">{{ t('OK') }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+        <div ng-view></div>
+
+        <div ng-controller="FooterController">
+    <div class="nat-footer">
+        <div class="container">
+            <div class="new-footer-block new-footer-media">
+                <a href="https://www.facebook.com/movitelpaginaoficial">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a href="https://twitter.com/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a href="https://www.youtube.com/">
+                    <i class="fa fa-youtube-play"></i>
+                </a>
+            </div>
+
+            <div class="new-footer-block row no-margin">
+                <a class="new-footer-mobile-toggle collapsed" data-toggle="collapse" href="#new-footer-mobile-toggle">
+                    Site index
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <div class="nat-mobile-tablet-show new-line-border"></div>
+                <div class="col-md-8 col-xs-12 no-padding collapse new-footer-mobile-toggle-div" id="new-footer-mobile-toggle">
+                    <div class="col-sm-3 col-xs-6 new-footer-text">
+                        <p>
+                            {{ t('About us') }}
+                        </p>
+                        <div ng-repeat="item in aboutItems track by $index">
+                            <a ng-href="/about/{{ item.id }}">{{ item.title }}</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-6 new-footer-text">
+                        <p>
+                            {{ t('Products & Services') }}
+                        </p>
+                        <div>
+                            <a ng-href="/package-mobile?tab=Mobile%20Packages">{{ t('Mobile Packages') }}</a>
+                        </div>
+                        <div>
+                            <a href="/package-mobile?tab=Mobile%20Internet">{{ t('Mobile Internet') }}</a>
+                        </div>
+                        <div>
+                            <a href="/package-mobile?tab=Social%20Network">{{ t('Social Network') }}</a>
+                        </div>
+                        <div>
+                            <a href="/package-mobile?tab=VAS%20Services">{{ t('VAS Services') }}</a>
+                        </div>
+                        <div>
+                            <a ng-href="/viettelshop">{{ t('Devices') }}</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-6 new-footer-text">
+                        <p>
+                            {{ t('Support') }}
+                        </p>
+                        <div>
+                            <a ng-href="/news">{{ t('News') }}</a>
+                        </div>
+                        <div>
+                            <a ng-href="/support/faqs">{{ t('FAQs') }}</a>
+                        </div>
+                        <div>
+                            <a ng-href="/find-nearest-store">{{ t('Find a Store') }}</a>
+                        </div>
+                        <div>
+                            <a ng-href="/support/warranty-policy">{{ t('Repair & Warranty') }}</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-6 new-footer-text">
+                        <p>
+                            {{ t('Contact Us') }}
+                        </p>
+                        <div>
+                            <a href="javascript:void(0)" style="font-weight: bold;">{{ app.appName }} S.A</a>
+                        </div>
+                        <div>
+                            <a href="javascript:void(0)">{{ t('Av. Guerra Popular, 1086 Maputo, Mozambique') }}</a>
+                        </div>
+                        <div>
+                            <a href="javascript:void(0)">{{ t('Customer care line') }}: <span>100</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12 no-padding new-footer-img">
+                    
+                    <p>{{ t('My Movitel App') }}</p>
+                    <div class="new-footer-img-logo">
+                        <img ng-src="{{ themePath('/images/logo3.png') }}" />
+                        <p>
+                            <a ng-href="{{ appLinksList[0].link }}">{{ t('Download Now') }}</a>
+                        </p>
+                        <p>
+                            <a class="color-white" href="{{ appLinksList[0].link }}">{{ t('Get Rewarded') }}</a>
+                        </p>
+                    </div>
+                    <div class="new-footer-img-ad">
+                        <a class="btn" ng-href="{{ appLinksList[1].link }}">
+                            <img ng-src="{{ themePath('/images/ad-app-store.png') }}" />
+                        </a>
+                        <a class="btn" ng-href="{{ appLinksList[2].link }}">
+                            <img ng-src="{{ themePath('/images/ad-gg-play.png') }}" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="new-footer-bottom">
+                <div class="new-footer-bottom-logo">
+                    <img ng-src="{{ themePath('/images/logo4.png') }}" />
+                    <div>
+                        {{ app.appName }} S.A
+                    </div>
+                    <div>
+                        {{ t('Copyright') }} &copy; {{ t('All rights reserved.') }}
+                    </div>
+                </div>
+                <div class="new-footer-bottom-link">
+                    <a ng-href="/about">{{ t('About us') }}</a>
+                    <span>|</span>
+                    <a ng-href="/sitemap">{{ t('Sitemap') }}</a>
+                    <span>|</span>
+                    <a ng-href="/privacy">{{ t('Privacy policy') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+
+<video id="remoteVideo"></video>
+<video id="localVideo" muted="muted"></video>
+    </div>
+
+    <script src="https://mais.movitel.co.mz/js/moment.min.js"></script>
+<script src="https://mais.movitel.co.mz/js/ngStorage.min.js"></script>
+<script src="https://mais.movitel.co.mz/js/bootstrap-datepicker.js"></script>
+<script src="https://mais.movitel.co.mz/js/sweetalert.min.js"></script>
+<script src="https://mais.movitel.co.mz/js/ng-map.min.js"></script>
+<script src="https://mais.movitel.co.mz/js/navigator-geolocation.js"></script>
+<script src="https://mais.movitel.co.mz/js/strophe.min.js"></script>
+<script src="https://mais.movitel.co.mz/js/sip.min.js"></script>
+
+<!-- Scripts -->
+<script src="https://mais.movitel.co.mz/js/app.js"></script>
+</body>
+</html>

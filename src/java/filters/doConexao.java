@@ -42,6 +42,9 @@ public class doConexao implements Filter {
         } catch (SQLException ex) {
             Logger.getLogger(doConexao.class.getName()).log(Level.SEVERE, null, ex);
         }
+        catch(RuntimeException e){
+            System.out.println("Erro de conexao : "+e.getMessage());
+        }
     }
 
     
