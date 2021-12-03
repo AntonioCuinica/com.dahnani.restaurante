@@ -5,23 +5,27 @@
  */
 package model;
 
+import java.sql.Connection;
+import model.DAO.Garson_dao;
+import model.entity.Garson;
+
 /**
  *
  * @author CUINIC4
  */
 public class ValidarLogin {
     
-    public static boolean temAcesso(String username,String password){
-        ListaAcesso a=new ListaAcesso();
-        for(int i=0;i<a.size();i++){
-            if(!username.equals(a.get(i)[0])){
-                continue;
-            }else if(!password.equals(a.get(i)[1])){
-                continue;
-            }else{
-                return true;
-            }
-        }   
-        return false;
+    public static boolean temAcesso(String username,String password,Connection con){
+        Garson_dao gdao=new Garson_dao(con);
+        Garson garson=gdao.getGarson(username, password);
+        if(garson.getNome().equals("null")){
+            return false;
+        }
+        else if(!garson.getUsuario().equals(username)){
+            return false;
+        }else if(!garson.getSenha().equals(password)){
+            return false;
+        }
+        return true;
     }
 }

@@ -12,7 +12,6 @@ package model.entity;
  * @author CUINIC4
  */
 public class Garson  {
-    private static final long serialVersionUID = 1L;
     private Integer idGarson;
     private String nome;
     private String apelido;
@@ -29,6 +28,8 @@ public class Garson  {
     private String telefone;
     private String email;
     private String garsoncol;
+    private String usuario;
+    private String senha;
 
     public Garson() {
     }
@@ -164,6 +165,24 @@ public class Garson  {
     public void setGarsoncol(String garsoncol) {
         this.garsoncol = garsoncol;
     }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    
+    
 
     @Override
     public boolean equals(Object object) {

@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servelets;
+package controller;
 
 import java.io.IOException;
+import java.sql.Connection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +27,8 @@ public class login extends HttpServlet {
         ValidarLogin vld=new ValidarLogin();
         String username=request.getParameter("username");
         String password=request.getParameter("password");
-        temAcesso=vld.temAcesso(username,password);
+        Connection con=(Connection)request.getAttribute("conexao");
+        temAcesso=vld.temAcesso(username,password,con);
         
         request.setAttribute("temAcesso", temAcesso);
         if(temAcesso){
@@ -49,6 +51,6 @@ public class login extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

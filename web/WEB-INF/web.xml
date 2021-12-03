@@ -14,7 +14,7 @@
     </servlet>
     <servlet>
         <servlet-name>login</servlet-name>
-        <servlet-class>servelets.login</servlet-class>
+        <servlet-class>controller.login</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>

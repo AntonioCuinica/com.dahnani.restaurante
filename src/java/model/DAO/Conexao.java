@@ -23,9 +23,11 @@ public class Conexao {
             Class.forName(driver);
             return DriverManager.getConnection("jdbc:mysql://"+hostname+"/"+bdname,username,password);
         }catch(SQLException e){
+             System.out.println("Erro de conexao SQL1 : "+e.getMessage());
             throw new RuntimeException(e);
         }
         catch(ClassNotFoundException f){
+             System.out.println("Erro de conexao SQL2 : "+f.getMessage());
             throw new RuntimeException(f);
         }
     }

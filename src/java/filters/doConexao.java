@@ -30,7 +30,6 @@ public class doConexao implements Filter {
     }
 
     
-    
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         
@@ -40,11 +39,10 @@ public class doConexao implements Filter {
             chain.doFilter(request, response);
             con.close();
         } catch (SQLException ex) {
+            System.out.println("Erro de conexao doFilter1 : "+ex.getMessage());
             Logger.getLogger(doConexao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        catch(RuntimeException e){
-            System.out.println("Erro de conexao : "+e.getMessage());
-        }
+      
     }
 
     
