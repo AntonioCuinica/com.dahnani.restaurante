@@ -17,7 +17,7 @@ import model.entity.Garson;
  */
 public class Garson_dao {
     private Connection con;
-    private Garson garson;
+    private static Garson garson;
     
     public Garson_dao(Connection con){
         this.con=con;
@@ -57,6 +57,10 @@ public class Garson_dao {
             System.out.println("Select error: "+e.getMessage());
             throw new RuntimeException(e);
         }
+        return garson;
+    }
+    
+    public static Garson getGarson(){
         return garson;
     }
 }

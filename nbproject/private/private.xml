@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/CUINIC4/OneDrive/Documents/NetBeansProjects/com.dahnani.restaurante/src/java/controller/login.java</file>
+            <file>file:/C:/Users/CUINIC4/OneDrive/Documents/NetBeansProjects/com.dahnani.restaurante/web/pages/css/index2.css</file>
+            <file>file:/C:/Users/CUINIC4/OneDrive/Documents/NetBeansProjects/com.dahnani.restaurante/web/pages/css/index.css</file>
+            <file>file:/C:/Users/CUINIC4/OneDrive/Documents/NetBeansProjects/com.dahnani.restaurante/web/WEB-INF/jsp/index.jsp</file>
             <file>file:/C:/Users/CUINIC4/OneDrive/Documents/NetBeansProjects/com.dahnani.restaurante/src/java/model/DAO/Garson_dao.java</file>
+            <file>file:/C:/Users/CUINIC4/OneDrive/Documents/NetBeansProjects/com.dahnani.restaurante/src/java/model/entity/Garson.java</file>
+            <file>file:/C:/Users/CUINIC4/OneDrive/Documents/NetBeansProjects/com.dahnani.restaurante/web/pages/js/index.js</file>
+            <file>file:/C:/Users/CUINIC4/OneDrive/Documents/NetBeansProjects/com.dahnani.restaurante/web/redirect.jsp</file>
         </group>
     </open-files>
 </project-private>

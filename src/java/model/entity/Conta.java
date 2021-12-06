@@ -6,6 +6,15 @@
 package model.entity;
 
 import java.util.Date;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /**
  *
@@ -16,6 +25,7 @@ public class Conta  {
     private Date data;
     private Double precoTodal;
     private int nrPedidos;
+    private String estado;
     private Factura facturaIdfactura;
 
     public Conta() {
@@ -53,6 +63,14 @@ public class Conta  {
         this.precoTodal = precoTodal;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     public Factura getFacturaIdfactura() {
         return facturaIdfactura;
     }
@@ -66,5 +84,7 @@ public class Conta  {
     public String toString() {
         return "model.entity.Conta[ contaPK=" + idconta + " ]";
     }
+
+
     
 }

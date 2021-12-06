@@ -42,7 +42,9 @@ public class doConexao implements Filter {
             System.out.println("Erro de conexao doFilter1 : "+ex.getMessage());
             Logger.getLogger(doConexao.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
+        catch(IllegalStateException e){
+            System.out.println("Erro no Filtro conexao: "+e.getMessage());
+        }
     }
 
     

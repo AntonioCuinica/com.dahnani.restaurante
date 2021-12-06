@@ -37,9 +37,14 @@ public class doLogin implements Filter {
             temAcesso=false;
         }
         if(!temAcesso){
-            RequestDispatcher rs=request.getRequestDispatcher("./WEB-INF/jsp/login.jsp");
-            rs.forward(request, response);
-            chain.doFilter(request, response);
+            try{
+                RequestDispatcher rs=request.getRequestDispatcher("./WEB-INF/jsp/login.jsp");
+                rs.forward(request, response);
+                chain.doFilter(request, response);
+            }
+            catch(IllegalStateException e){
+                System.out.println("Erro no Filtro login: "+e.getMessage());
+            }
         }
         
     }

@@ -9,5 +9,143 @@ and open the template in the editor.
 */
 
 body{
+    margin: 0;
+    padding: 0;
+    background-color: #e4e4e4;
+   
+}
+
+#header{
+    position:fixed;
+    z-index: 1;
+    width:100%;
+    height:10%;
+    
+    background-color: white ;
+}
+
+#sidebar{
+    position:fixed;
+    display:block;
+    z-index: 2;
+    left: 0px;
+    top:0px;
+    width:14em;
+    height:100%;
+    
+    background-color: #333333;
+}
+
+#menu >.input{
+    position: inherit;
+    display: block;
+    margin-bottom: 20px;
+    transform: translate(6%,20%);
+    width:94%;
+    height:50px;
+}
+
+
+#menu  > .input >.icon{
+    position: relative;
+    float: left;
+    left:0px;
+    width:20%;
+    height:100%;
+    background:none;
+}
+
+#menu  > .input >.icon>img{
+    positio:inherit;
+    display: box;
+    left:10px;
+    transform: translateY(20%);
+    width: 80%;
+    color:white;
+}
+
+
+#menu > .input >input{
+    position:relative;
+    float:left;
+    left:0px;
+    height:100%;
+    width:80%;
+    text-align: left;
+    border: 0px;
+    outline:none;
+    background: none;
+    font-size: 16px;
+    color: white;
+}
+#menu > .input >input:hover{
+   background: gray;
+}
+
+
+
+#mainbody{
+    position:fixed;
+    alignment-adjust: middle;
+    left:14em;
+    transform: translateX(3%);
+    transform-origin: center;
+    z-index: 0;
+    top:15%;
+    width: 79% ;
+    height: 75%;
+    background-color: white;
+}
+
+#main_rPed{
+    position:inherit;
+    display: inline-block;
+    left:0px;
+    top:0px;
+    width: 100%;
+    height:100%;
     background-color: blue;
+}
+#main_vPed{
+    position:inherit;
+    left:0px;
+    top:0px;
+    width: 100%;
+    height:100%;
+    background-color: red;
+}
+#main_vCont{
+    position:inherit;
+    left:0px;
+    top:0px;
+    width: 100%;
+    height:100%;
+    background-color: green;
+}
+#main_vProd{
+    position:inherit;
+    left:0px;
+    top:0px;
+    width: 100%;
+    height:100%;
+    background-color: orange;
+}
+
+
+#footer{
+    position:fixed;
+    z-index: 0;
+    left:0px;
+    bottom:0px;
+    width:100%;
+    height: 5%;
+    background-color: slategrey;
+}
+#footer > p{
+    position: relative;
+    float:left;
+    left:50%;
+    top:-8px;
+    color:white;
+    text-align: center;
 }
