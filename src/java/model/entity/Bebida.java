@@ -17,25 +17,25 @@ import java.util.Date;
 public class Bebida {
     private static final long serialVersionUID = 1L;
     
-    private Integer idbebida;
+    private int idbebida;
     private String nome;
     private Double preco;
     private String marca;
-    private Integer quantidade;
+    private String quantidade;
     private Date dataExpiracao;
 
     public Bebida() {
     }
 
-    public Bebida(Integer idbebida) {
+    public Bebida(int idbebida) {
         this.idbebida = idbebida;
     }
 
-    public Integer getIdbebida() {
+    public int getIdbebida() {
         return idbebida;
     }
 
-    public void setIdbebida(Integer idbebida) {
+    public void setIdbebida(int idbebida) {
         this.idbebida = idbebida;
     }
 
@@ -63,11 +63,11 @@ public class Bebida {
         this.marca = marca;
     }
 
-    public Integer getQuantidade() {
+    public String getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Integer quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -79,19 +79,6 @@ public class Bebida {
         this.dataExpiracao = dataExpiracao;
     }
 
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Bebida)) {
-            return false;
-        }
-        Bebida other = (Bebida) object;
-        if ((this.idbebida == null && other.idbebida != null) || (this.idbebida != null && !this.idbebida.equals(other.idbebida))) {
-            return false;
-        }
-        return true;
-    }
 
     @Override
     public String toString() {

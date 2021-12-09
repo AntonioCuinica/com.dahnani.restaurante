@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Connection;
+import javax.servlet.FilterConfig;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,9 +22,17 @@ import model.ValidarLogin;
 
 public class login extends HttpServlet {
     private boolean temAcesso=false;
+    HttpServletRequest  request;
+    
+    public void init(FilterConfig filterConfig) throws ServletException {
+        temAcesso=false;
+        temAcesso(false);
+    }
+    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        this.request=request;
         ValidarLogin vld=new ValidarLogin();
         String username=request.getParameter("username");
         String password=request.getParameter("password");
@@ -47,6 +56,9 @@ public class login extends HttpServlet {
         processRequest(request, response);
     }
 
+    public  void  temAcesso(boolean acesso){
+        request.setAttribute("temAcesso", acesso);
+    }
     
     @Override
     public String getServletInfo() {

@@ -16,7 +16,7 @@ public class Prato{
     private Double preco;
     private String descricao;
     private String ingredientes;
-
+    private String categoria;
     public Prato() {
     }
 
@@ -71,8 +71,12 @@ public class Prato{
     public void setIngredientes(String ingredientes) {
         this.ingredientes = ingredientes;
     }
-
-
+    public String getCategoria() {
+        return categoria;
+    }
+    public void setCategoria(String categoria) {
+        this.categoria=categoria;
+    }
 
     @Override
     public boolean equals(Object object) {
@@ -91,5 +95,7 @@ public class Prato{
     public String toString() {
         return "model.entity.Prato[ idprato=" + idprato + " ]";
     }
+
+    
     
 }

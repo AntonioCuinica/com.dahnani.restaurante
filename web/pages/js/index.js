@@ -43,11 +43,15 @@ function btnHoverOut(btn){
 }
 
 function garson(){
-    
+    var div=document.getElementById("vgarson");
+    div.style.display='inherit';
+    window.document.body.innerHTML+=div;
 }
 
 function usuario(){
-    
+    var div=document.getElementById("vuser");
+    div.style.display='inherit';
+    window.document.body.innerHTML+=div;
 }
 function registarPedido(){
     var div=document.getElementById("main_rPed");
@@ -66,7 +70,9 @@ function verificarProdutos(){
     setMainInvisible(div);
 }
 function fazerLogout(){
-  
+    var div=document.getElementById("vlogout");
+    div.style.display='inherit';
+    window.document.body.innerHTML+=div;
 }
 function setMainInvisible(main){
     var mains=document.getElementsByClassName("mainbody");
@@ -76,3 +82,30 @@ function setMainInvisible(main){
     main.style.display='inherit';
 }
 
+function userCancel(){
+    var btn=document.querySelector("#btn_u");
+    btn.style.background='none';
+    var div=document.getElementById("vuser");
+    div.style.display='none';
+}
+function garsonCancel(){
+    var btn=document.querySelector("#btn_g");
+    btn.style.background='none';
+    var div=document.getElementById("vgarson");
+    div.style.display='none';
+}
+function logoutCancel(){
+    var btn=document.querySelector("#btn_log");
+    btn.style.background='none';
+    var div=document.getElementById("vlogout");
+    div.style.display='none';
+}
+
+function rPedido(div_id,btn){
+    var div=document.getElementById(div_id);
+    div.style.display='inherit';
+}
+function rPedidoX(div_id){
+    var div=document.getElementById(div_id);
+    div.style.display='none'; 
+}

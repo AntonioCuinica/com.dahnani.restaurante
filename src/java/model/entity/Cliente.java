@@ -19,7 +19,6 @@ public class Cliente  {
     private String apelido;
     private String email;
     private String morada;
-    private String clientecol;
 
     public Cliente() {
     }
@@ -68,14 +67,6 @@ public class Cliente  {
         this.morada = morada;
     }
 
-    public String getClientecol() {
-        return clientecol;
-    }
-
-    public void setClientecol(String clientecol) {
-        this.clientecol = clientecol;
-    }
-    
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set

@@ -10,31 +10,38 @@ and open the template in the editor.
 
 #main_rPed{
     position:inherit;
-    display: flex;
-    flex-wrap:wrap;
     left:0px;
     top:0px;
     width: 100%;
     height:100%;
-    background-color: blue;
+    background-color: #0a3638f2;
+}
+
+
+#main_rPed > table{
+    position:inherit;
+    float:left;
+    left:50%;
+    top:50%;
+    width:100%;
+    height:50%;
+    transform: translate(-50%,-50%);
 }
 
 .rpedido{
-    position:relative;
-    float:left;
-    left:12px;
-    transform: translateY(40%);
-    width: 29%;
-    height:50%;
-    margin:20px 20px 0px 20px;
+    position:inherit;
+    left:50%;
+    transform: translateX(12.5%);
+    width: 80%;
+    height:80%;
     background-color: whitesmoke;
 }
 #rcliente{
     position: inherit;
     float:left;
-    left:12px;;
-    bottom: 50px;
-    margin-left:20px;
+    left:50%;
+    transform: translateX(-50%);
+    bottom: 3%;
     width:200px;
     height:40px;
     background-color: whitesmoke;
@@ -42,4 +49,64 @@ and open the template in the editor.
 .rpedido:hover,#rcliente:hover{
     background-color: gray;
     color:white;
+}
+
+.myModel{
+    position:absolute;
+    display: none;
+    z-index: 3;
+    width:100%;
+    height:100%;
+    background-color: rgba(10,20,120,0.5);
+}
+.garson_dados{
+    position:relative;
+    float:left;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    width:400px;
+    height:300px;
+    background-color: orange;
+}
+
+.x{
+    position:relative;
+    float:right;
+    right:0px;
+    width:30px;
+    height:30px;
+    font-size: 22pt;
+    background:none;
+}
+.x:hover{
+    background-color: red;
+}
+.gdados,#vgarson > .garson_dados > h2,#vlogout > .garson_dados > h2{
+    font-size: 18pt;
+    margin: 10px;
+    padding: 5px;
+}
+#vlogout > #logBox{
+    position:relative;
+    float:left;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    width:300px;
+    height:200px;
+    background-color: orange;
+    text-align:center;
+}
+#vlogout > .garson_dados > h2{
+    font-size: 18pt;
+    margin: 40px;
+    padding: 5px;
+}
+#vlogout > .garson_dados >button,#vlogout > .garson_dados > a >button{
+    width:85px;
+    height:35px;
+    margin:10px;
+    padding:5px;
+    border-radius: 10px;
 }

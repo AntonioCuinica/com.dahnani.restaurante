@@ -16,7 +16,7 @@ import model.entity.Garson;
  * @author CUINIC4
  */
 public class Garson_dao {
-    private Connection con;
+    private static Connection con;
     private static Garson garson;
     
     public Garson_dao(Connection con){
@@ -58,6 +58,10 @@ public class Garson_dao {
             throw new RuntimeException(e);
         }
         return garson;
+    }
+    
+    public static Connection getCon(){
+        return con;
     }
     
     public static Garson getGarson(){

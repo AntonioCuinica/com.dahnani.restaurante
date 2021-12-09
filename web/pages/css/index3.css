@@ -1,0 +1,32 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 8, 2021, 10:13:39 PM
+    Author     : CUINIC4
+*/
+#rpd_cliente > .garson_dados{
+    width:500px;
+}
+.camP{
+    display:block;
+    margin:5px 20px 5px 20px;
+    padding:8px;
+}
+.garson_dados > h2{
+    margin:20px;
+    margin-bottom: 0px;
+    padding:8px;
+}
+.camP > input[type="number"]{
+    width:50px;
+}
+.camP > input[type="text"],.camP > input[type="email"]{
+    width:160px;
+}
+.camP >textArea{
+    width:200px;
+    height:80px;
+}

@@ -12,7 +12,11 @@ body{
     margin: 0;
     padding: 0;
     background-color: #e4e4e4;
-   
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 #header{
@@ -97,15 +101,6 @@ body{
     background-color: white;
 }
 
-#main_rPed{
-    position:inherit;
-    display: inline-block;
-    left:0px;
-    top:0px;
-    width: 100%;
-    height:100%;
-    background-color: blue;
-}
 #main_vPed{
     position:inherit;
     left:0px;
@@ -140,12 +135,15 @@ body{
     width:100%;
     height: 5%;
     background-color: slategrey;
+    color:white;
+    text-align: center;
+    text-height: 15px;
 }
-#footer > p{
+/*#footer > p{
     position: relative;
     float:left;
     left:50%;
     top:-8px;
     color:white;
-    text-align: center;
-}
+    text-align: right;
+}*/
