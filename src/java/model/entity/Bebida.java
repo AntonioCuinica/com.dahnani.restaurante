@@ -15,14 +15,13 @@ import java.util.Date;
  */
 
 public class Bebida {
-    private static final long serialVersionUID = 1L;
     
     private int idbebida;
     private String nome;
     private Double preco;
     private String marca;
     private String quantidade;
-    private Date dataExpiracao;
+    private String dataExpiracao;
 
     public Bebida() {
     }
@@ -71,11 +70,11 @@ public class Bebida {
         this.quantidade = quantidade;
     }
 
-    public Date getDataExpiracao() {
+    public String getDataExpiracao() {
         return dataExpiracao;
     }
 
-    public void setDataExpiracao(Date dataExpiracao) {
+    public void setDataExpiracao(String dataExpiracao) {
         this.dataExpiracao = dataExpiracao;
     }
 

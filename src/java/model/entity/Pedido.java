@@ -5,6 +5,8 @@
  */
 package model.entity;
 
+import java.util.ArrayList;
+
 
 /**
  *
@@ -13,9 +15,9 @@ package model.entity;
 
 public class Pedido  {
     private int idpedido;
-    private Bebida bebidaIdbebida;
-    private Mesa mesaIdmesa;
-    private Prato pratoIdprato;
+    private ArrayList<Bebida> bebidaIdbebida;
+    private ArrayList<Mesa> mesaIdmesa;
+    private ArrayList<Prato> pratoIdprato;
 
     public Pedido() {
     }
@@ -29,27 +31,27 @@ public class Pedido  {
     }
 
     
-    public Bebida getBebidaIdbebida() {
+    public ArrayList<Bebida> getBebidaIdbebida() {
         return bebidaIdbebida;
     }
 
-    public void setBebidaIdbebida(Bebida bebidaIdbebida) {
+    public void setBebidaIdbebida(ArrayList<Bebida> bebidaIdbebida) {
         this.bebidaIdbebida = bebidaIdbebida;
     }
 
-    public Mesa getMesaIdmesa() {
+    public ArrayList<Mesa> getMesaIdmesa() {
         return mesaIdmesa;
     }
 
-    public void setMesaIdmesa(Mesa mesaIdmesa) {
+    public void setMesaIdmesa(ArrayList<Mesa> mesaIdmesa) {
         this.mesaIdmesa = mesaIdmesa;
     }
 
-    public Prato getPratoIdprato() {
+    public ArrayList<Prato> getPratoIdprato() {
         return pratoIdprato;
     }
 
-    public void setPratoIdprato(Prato pratoIdprato) {
+    public void setPratoIdprato(ArrayList<Prato> pratoIdprato) {
         this.pratoIdprato = pratoIdprato;
     }
 

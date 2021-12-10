@@ -152,7 +152,7 @@
                         <b>Escolha uma bebida:</b>
                         <select name="bebida">
                             <% for(Bebida b:bebidas){%>
-                                <option value="<%=b.getIdbebida()%>"><%=b.getNome()%></option>
+                               <%if(b.getIdbebida()!=1){%> <option value="<%=b.getIdbebida()%>"><%=b.getNome()%></option><%}%>
                             <%}%>
                         </select>
                     </p>
@@ -185,7 +185,7 @@
                         <b>Escolha uma sobremesa:</b>
                         <select name="sobremesa">
                             <% for(Prato b:sobremesas){%>
-                                <option value="<%=b.getIdprato()%>"><%=b.getNome()%></option>
+                                <%if(b.getIdprato()!=1){%><option value="<%=b.getIdprato()%>"><%=b.getNome()%></option><%}%>
                             <%}%>
                         </select>
                     </p>
@@ -202,7 +202,7 @@
          
         <!--Dialog Registar pedidos: prato principal -->
         <div id="rpd_pratoP" class="myModel">
-            <div class="garson_dados" ">
+            <div class="garson_dados">
                 <button class="x" onclick="rPedidoX('rpd_pratoP')">X</button>
                 <h2>Prato principal</h2>
                 <form action="prato" method="POST">
@@ -218,7 +218,7 @@
                         <b>Escolha um prato:</b>
                         <select name="prato">
                             <% for(Prato b:pratos){%>
-                                <option value="<%=b.getIdprato()%>"><%=b.getNome()%></option>
+                                <%if(b.getIdprato()!=1){%><option value="<%=b.getIdprato()%>"><%=b.getNome()%></option><%}%>
                             <%}%>
                         </select>
                     </p>
@@ -235,7 +235,7 @@
           
         <!--Dialog Registar pedidos: registar cliente -->
         <div id="rpd_cliente" class="myModel">
-            <div class="garson_dados" ">
+            <div class="garson_dados">
                 <button class="x" onclick="rPedidoX('rpd_cliente')">X</button>
                 <h2>Registar Cliente</h2>
                 <form action="cliente" method="POST">

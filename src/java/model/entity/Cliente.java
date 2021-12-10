@@ -13,7 +13,6 @@ package model.entity;
  */
 
 public class Cliente  {
-    private static final long serialVersionUID = 1L;
     private Integer idcliente;
     private String nome;
     private String apelido;
@@ -23,8 +22,11 @@ public class Cliente  {
     public Cliente() {
     }
 
-    public Cliente(Integer idcliente) {
-        this.idcliente = idcliente;
+    public Cliente(String nome) {
+        this.nome=nome;
+        this.apelido="null";
+        this.email="null";
+        this.morada="null";
     }
 
     public Integer getIdcliente() {

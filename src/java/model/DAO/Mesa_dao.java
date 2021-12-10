@@ -51,4 +51,32 @@ public class Mesa_dao {
         }
         return bds;
     }
+    
+    
+    public ArrayList<Mesa> getMesaP(String idpedido){
+        String select="SELECT * FROM mesa b join pedido p on p.mesa_idmesa=b.idmesa where p.idpedido=? ;";
+        ArrayList <Mesa>bds=new ArrayList();
+        try{
+            PreparedStatement stmt=con.prepareStatement(select);
+            stmt.setString(1, idpedido);
+            ResultSet rs=stmt.executeQuery();
+            while(rs.next()){
+                mesa=new Mesa();
+                mesa.setIdmesa(Integer.parseInt(rs.getString("b.idmesa")));
+                mesa.setNome(rs.getString("b.nome"));
+                mesa.setPreco(Double.parseDouble(rs.getString("b.preco")));
+                mesa.setDescricao(rs.getString("b.descricao"));
+                mesa.setQuantLugares(Integer.parseInt(rs.getString("b.quantLugares")));
+                bds.add(mesa);
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+        }catch(SQLException e){
+            System.out.println("Select error: "+e.getMessage());
+            throw new RuntimeException(e);
+        }
+        return bds;
+    }
+    
 }

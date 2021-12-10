@@ -34,6 +34,7 @@ public class Garson_dao {
             ResultSet rs=stmt.executeQuery();
             while(rs.next()){
                 garson=new Garson();
+                garson.setIdGarson(Integer.parseInt(rs.getString("g.idGarson")));
                 garson.setNome(rs.getString("g.nome"));
                 garson.setApelido(rs.getString("g.apelido"));
                 garson.setNascimento(rs.getString("g.nascimento"));
