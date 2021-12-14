@@ -13,7 +13,7 @@ package model.entity;
  */
 
 public class Cliente  {
-    private Integer idcliente;
+    private String idcliente;
     private String nome;
     private String apelido;
     private String email;
@@ -29,11 +29,11 @@ public class Cliente  {
         this.morada="null";
     }
 
-    public Integer getIdcliente() {
+    public String getIdcliente() {
         return idcliente;
     }
 
-    public void setIdcliente(Integer idcliente) {
+    public void setIdcliente(String idcliente) {
         this.idcliente = idcliente;
     }
 

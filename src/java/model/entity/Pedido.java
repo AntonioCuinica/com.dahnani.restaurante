@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class Pedido  {
     private int idpedido;
+    private String data;
     private ArrayList<Bebida> bebidaIdbebida;
     private ArrayList<Mesa> mesaIdmesa;
     private ArrayList<Prato> pratoIdprato;
@@ -24,6 +25,14 @@ public class Pedido  {
 
     public int getIdpedido() {
         return idpedido;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public void setIdpedido(int idpedido) {

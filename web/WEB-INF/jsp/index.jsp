@@ -1,3 +1,9 @@
+<%@page import="model.entity.Conta"%>
+<%@page import="model.DAO.Conta_dao"%>
+<%@page import="model.entity.Cliente"%>
+<%@page import="model.DAO.Cliente_dao"%>
+<%@page import="model.entity.Pedido"%>
+<%@page import="model.DAO.Pedido_dao"%>
 <%@page import="model.DAO.Prato_dao"%>
 <%@page import="model.entity.Prato"%>
 <%@page import="model.DAO.Mesa_dao"%>
@@ -43,11 +49,20 @@
             
             //Objecto sobremesa
             ArrayList<Prato> sobremesas=new Prato_dao().getPratos("Sobremesa");
+            
         %>
         
         <header id="header">
-             
+            <table id="head">
+                <tr>
+                    <td><button><img src="./pages/img/menu-6x.png" alt="menu"/></button></td>
+                    <td>Home</td>
+                    <td>Sobre</td>
+                    <td>Contacto</td>
+                </tr>
+            </table>
         </header>
+        
         <div id="sidebar">
             <div id="menu">
                 <div class="input">
@@ -84,7 +99,175 @@
                 </div>
             </div>
         </div>
+                
         <div id="mainbody">
+            <div class="mainbody" id="main_vPed">
+                   <h1 class="ptitle">Pedidos</h1>
+                   <table class="verTab">
+                       <tr class="row1">
+                           <th class="row1">Numero</th>
+                           <th class="row1">Mesa</th>
+                           <th class="row1">Cliente</th>
+                           <th class="row1">Bebida</th>
+                           <th class="row1">Preco</th>
+                           <th class="row1">data</th> 
+                       </tr>
+                       <%
+                       try{
+                       int count=0;
+                       for(Pedido p:Pedido_dao.getPedidos()){
+                           
+                           for(Mesa m:p.getMesaIdmesa()){
+                               Cliente cliente=Cliente_dao.getClienteByPedido(""+p.getIdpedido());
+                       %>
+                            
+                                <%for(Bebida b:p.getBebidaIdbebida()){
+                                    if(!b.getNome().equals("")){
+                                %>  
+                                    <tr class="<%=(count+1)%2==0?"par":"impar"%>">
+                                        <td><%=++count%></td>
+                                        <td><%=m.getNome()%></td>
+                                        <td><%=cliente.getNome()+" "+cliente.getApelido()%></td>
+                                        <td><%=b.getNome()%></td>
+                                        <td><%=b.getPreco()%></td>
+                                        <td><%=p.getData()%></td>
+                                     </tr>
+                                    <%}
+                                }%>
+                                
+                           
+                       <%   }
+                        }}catch(NullPointerException e){}
+                       %>
+                   </table>
+                   <table class="verTab2">
+                       <tr class="row1">
+                           <th class="row1">Numero</th>
+                           <th class="row1">Mesa</th>
+                           <th class="row1">Cliente</th>
+                           <th class="row1">Prato</th>
+                           <th class="row1">Preco</th>
+                           <th class="row1">data</th> 
+                       </tr>
+                       <%
+                       try{
+                       int count2=0;
+                       for(Pedido p:Pedido_dao.getPedidos()){
+                           for(Mesa m:p.getMesaIdmesa()){
+                               Cliente cliente=Cliente_dao.getClienteByPedido(""+p.getIdpedido());
+                       %>
+                            
+                                <%for(Prato b:p.getPratoIdprato()){
+                                    if(!b.getNome().equals("")){
+                                %>  
+                                    <tr class="<%=(count2+1)%2==0?"par":"impar"%>">
+                                        <td><%=++count2%></td>
+                                        <td><%=m.getNome()%></td>
+                                        <td><%=cliente.getNome()+" "+cliente.getApelido()%></td>
+                                        <td><%=b.getNome()%></td>
+                                        <td><%=b.getPreco()%></td>
+                                        <td><%=p.getData()%></td>
+                                     </tr>
+                                    <%}
+                                }%>
+                                
+                           
+                       <%   }
+                        }}catch(NullPointerException e){}
+                       %>
+                   </table>
+            </div>
+                   
+            <div class="mainbody" id="main_vCont">
+                <h1 class="ptitle">Contas</h1>
+                <table class="verTab">
+                       <tr class="row1">
+                           <th class="row1">Numero</th>
+                           <th class="row1">Cliente</th>
+                           <th class="row1">Garson</th>
+                           <th class="row1">Numero de Pedidos</th> 
+                           <th class="row1">Preco Total</th>
+                           <th class="row1">Estado</th>
+                           <th>---</th>
+                       </tr>
+                       <%
+                        try{
+                        int count=0;
+                            for(Conta b:Conta_dao.getContas()){
+                                if(!b.getClienteId().equals("")){
+                            %>      
+                                    <tr class="<%=(count+1)%2==0?"par":"impar"%>">
+                                        <td><%=++count%></td>
+                                        <td><%=b.getClienteId()%></td>
+                                        <td><%=b.getGarsonId()%></td>
+                                        <td><%=b.getNrPedidos()%></td>
+                                        <td><%=b.getPrecoTodal()%></td>
+                                        <td><%=b.getEstado()%></td>
+                                        <td><button class="fechar" onclick="logoutCancel()">fechar</button></td>
+                                    </tr>
+                        <%}
+                            }
+                        }catch(NullPointerException e){}
+                        %>
+                   </table>
+            </div>
+                   
+            <div class="mainbody" id="main_vProd">
+                <h1 class="ptitle">Produtos</h1>
+                <table class="verTab">
+                       <tr class="row1">
+                           <th class="row1">Numero</th>
+                           <th class="row1">Bebida</th>
+                           <th class="row1">Preco</th>
+                           <th class="row1">Marca</th> 
+                           <th class="row1">Quantidade</th>
+                       </tr>
+                       <%
+                        try{
+                        int count=0;
+                            for(Bebida b:bebidas){
+                                if(!b.getNome().equals("")){
+                            %>      
+                                    <tr class="<%=(count+1)%2==0?"par":"impar"%>">
+                                        <td><%=++count%></td>
+                                        <td><%=b.getNome()%></td>
+                                        <td><%=b.getPreco()%></td>
+                                        <td><%=b.getMarca()%></td>
+                                        <td><%=b.getQuantidade()%></td>
+                                    </tr>
+                        <%}
+                            }
+                        }catch(NullPointerException e){}
+                        %>
+                   </table>
+                   <table class="verTab2">
+                       <tr class="row1">
+                           <th class="row1">Numero</th>
+                           <th class="row1">Prato</th>
+                           <th class="row1">Preco</th>
+                           <th class="row1">Quantidade</th>
+                           <th class="row1">Categoria</th> 
+                       </tr>
+                       <%
+                        try{
+                        int count=0;
+                            for(Prato b:Prato_dao.getPratos()){
+                                if(!b.getNome().equals("")){
+                            %>      
+                                    <tr class="<%=(count+1)%2==0?"par":"impar"%>">
+                                        <td><%=++count%></td>
+                                        <td><%=b.getNome()%></td>
+                                        <td><%=b.getPreco()%></td>
+                                        <td><%=b.getQuantidade()%></td>
+                                        <td><%=b.getCategoria()%></td>
+                                    </tr>
+                        <%}
+                            }
+                        }catch(NullPointerException e){}
+                        %>
+                   </table>
+            </div>
+                   
             <div class="mainbody" id="main_rPed">
                 <table>
                     <tr>
@@ -94,15 +277,6 @@
                     </tr>
                 </table>
                 <button id="rcliente" name="Registar Cliente" onclick="rPedido('rpd_cliente',this)">Registar Cliente</button>
-            </div>
-            <div class="mainbody" id="main_vPed">
-                
-            </div>
-            <div class="mainbody" id="main_vCont">
-                
-            </div>
-            <div class="mainbody" id="main_vProd">
-                
             </div>
         </div>
                 
@@ -179,7 +353,7 @@
                             <% for(Mesa b:mesas){%>
                                 <option value="<%=b.getIdmesa()%>"><%=b.getNome()%></option>
                             <%}%>
-                        </select>
+                        </select> 
                     </p>
                     <p class="camP">
                         <b>Escolha uma sobremesa:</b>
@@ -266,14 +440,14 @@
         <div id="vlogout" class="myModel">
             <div class="garson_dados" id="logBox">
                 <h2>Deseja Sair ?</h2>
-                <a href="logout"><button id="sim" style="background-color:greenyellow;" >Sim</button></a>
-                <button id="nao" style="background-color:red;" onclick="logoutCancel()">Nao</button>
+                <a href="logout"><button id="sim" style="background-color:#94b68e;" >Sim</button></a>
+                <button id="nao" style="background-color:#94b68e;" onclick="logoutCancel()">Nao</button>
             </div>
         </div>
         
         <!--Nostas de rodapé -->
         <div id="footer">
-            Direitos reservados a dahnani @ 2021
+            <p>Direitos reservados a dahnani @ 2021</p>
         </div>
         
     </body>

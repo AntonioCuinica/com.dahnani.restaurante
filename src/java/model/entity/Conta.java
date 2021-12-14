@@ -21,46 +21,64 @@ import javax.naming.NamingException;
  * @author CUINIC4
  */
 public class Conta  {
-    private int idconta;
-    private Date data;
-    private Double precoTodal;
-    private int nrPedidos;
+    private String idconta;
+    private String data;
+    private String precoTodal;
+    private String nrPedidos;
     private String estado;
     private Factura facturaIdfactura;
+    private String pedidoId;
+    private String clienteId;
+    private String garsonId;
 
-    public Conta() {
+    public String getGarsonId() {
+        return garsonId;
     }
 
-    public int getIdconta() {
+    public void setGarsonId(String garsonId) {
+        this.garsonId = garsonId;
+    }
+    
+    
+    public String getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(String clienteId) {
+        this.clienteId = clienteId;
+    }
+    
+    
+    public String getIdconta() {
         return idconta;
     }
 
-    public void setIdconta(int idconta) {
+    public void setIdconta(String idconta) {
         this.idconta = idconta;
     }
 
-    public int getNrPedidos() {
-        return nrPedidos;
-    }
-
-    public void setNrPedidos(int nrPedidos) {
-        this.nrPedidos = nrPedidos;
-    }
-
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
-    public Double getPrecoTodal() {
+    public String getPrecoTodal() {
         return precoTodal;
     }
 
-    public void setPrecoTodal(Double precoTodal) {
+    public void setPrecoTodal(String precoTodal) {
         this.precoTodal = precoTodal;
+    }
+
+    public String getNrPedidos() {
+        return nrPedidos;
+    }
+
+    public void setNrPedidos(String nrPedidos) {
+        this.nrPedidos = nrPedidos;
     }
 
     public String getEstado() {
@@ -79,12 +97,16 @@ public class Conta  {
         this.facturaIdfactura = facturaIdfactura;
     }
 
-   
-    @Override
+    public String getPedidoId() {
+        return pedidoId;
+    }
+
+    public void setPedidoId(String pedidoId) {
+        this.pedidoId = pedidoId;
+    }
+
     public String toString() {
         return "model.entity.Conta[ contaPK=" + idconta + " ]";
     }
-
-
     
 }

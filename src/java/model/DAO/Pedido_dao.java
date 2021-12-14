@@ -30,15 +30,17 @@ public class Pedido_dao {
         pedido=new Pedido();
     }
     
-    public ArrayList<Pedido> getPedidos(){
-        String select="SELECT * FROM dahnani.pedido;";
+    public static ArrayList<Pedido> getPedidos(){
+        String select="SELECT * FROM dahnani.pedido where data=curdate();";
         ArrayList <Pedido>bds=new ArrayList();
         try{
+            con=new Conexao().getConexao();
             PreparedStatement stmt=con.prepareStatement(select);
             ResultSet rs=stmt.executeQuery();
             while(rs.next()){
                 pedido=new Pedido();
-                String idpedido=rs.getString("idbebida");
+                String idpedido=rs.getString("idpedido");
+                pedido.setData(rs.getString("data"));
                 pedido.setIdpedido(Integer.parseInt(idpedido));
                 pedido.setBebidaIdbebida(new Bebida_dao().getBebidaP(idpedido));
                 pedido.setMesaIdmesa(new Mesa_dao().getMesaP(idpedido));
@@ -55,10 +57,12 @@ public class Pedido_dao {
         return bds;
     }
     
-    public static String getPedidoId(){
-        String select="SELECT max(idgarson) as max FROM dahnani.garson;;";
+    public static String getPedidoIdByMesa(String idmesa){
+        String select="SELECT idpedido as max FROM dahnani.pedido where `pedido`.`mesa_idmesa`=? and `pedido`.`data`=curdate();";
         try{
+            con=new Conexao().getConexao();
             PreparedStatement stmt=con.prepareStatement(select);
+            stmt.setString(1, idmesa);
             ResultSet rs=stmt.executeQuery();
             while(rs.next()){
                 return rs.getString("max");
@@ -91,7 +95,7 @@ public class Pedido_dao {
                stmt.setString(2,"1");
                stmt.setString(3,id);
             }
-            stmt.setString(4, idmesa);
+            stmt.setString(4,idmesa);
             stmt.execute();
             
             System.out.println("Pedido: "+pedido);
@@ -100,17 +104,18 @@ public class Pedido_dao {
             System.out.println("cliente: "+cliente.getNome());
             System.out.println("idGarson:   : "+Garson_dao.getGarson().getIdGarson());
            
-            Cliente_dao.setCliente(cliente);
-            System.out.println("clienteid: "+Cliente_dao.getClienteId(cliente.getNome(),cliente.getEmail()));
+            System.out.println("Cliente object:"+Cliente_dao.getClienteByMesa(idmesa,cliente));
+            System.out.println("clienteid: "+Cliente_dao.getClienteByMesa(idmesa,cliente).getIdcliente());
+            
             stmt=con.prepareStatement(select1);
             stmt.setString(1,""+Garson_dao.getGarson().getIdGarson());
-            stmt.setString(2, getPedidoId());
+            stmt.setString(2,""+getPedidoIdByMesa(idmesa));
             stmt.execute();
 
             stmt=con.prepareStatement(select2);
             stmt.setString(1,""+Garson_dao.getGarson().getIdGarson());
-            stmt.setString(2,""+Cliente_dao.getClienteId(cliente.getNome(),cliente.getEmail()));
-            stmt.setString(3,""+getPedidoId());
+            stmt.setString(2,""+Cliente_dao.getClienteByMesa(idmesa,cliente).getIdcliente());
+            stmt.setString(3,""+getPedidoIdByMesa(idmesa));
             stmt.execute();
 
             

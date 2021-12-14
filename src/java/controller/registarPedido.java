@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.DAO.Cliente_dao;
 import model.DAO.Pedido_dao;
 import model.entity.Bebida;
 import model.entity.Cliente;
@@ -41,6 +42,7 @@ public class registarPedido extends HttpServlet {
                 for(int i=0;i<n;i++){
                     Pedido_dao.setPedidos("bebida",request.getParameter("bebida"),request.getParameter("mesa"),cliente);
                 }
+                cliente=new Cliente();
                 response.sendRedirect("index.htm");
             }
             else if(request.getRequestURI().contains("sobremesa")){
@@ -48,6 +50,7 @@ public class registarPedido extends HttpServlet {
                 for(int i=0;i<n;i++){
                     Pedido_dao.setPedidos("prato",request.getParameter("sobremesa"),request.getParameter("mesa"),cliente);
                 }
+                cliente=new Cliente();
                 response.sendRedirect("index.htm");
             }
             else if(request.getRequestURI().contains("prato")){
@@ -55,6 +58,7 @@ public class registarPedido extends HttpServlet {
                 for(int i=0;i<n;i++){
                     Pedido_dao.setPedidos("prato",request.getParameter("prato"),request.getParameter("mesa"),cliente);
                 }
+                cliente=new Cliente();
                 response.sendRedirect("index.htm");
             }
             else if(request.getRequestURI().contains("cliente")){
@@ -62,6 +66,7 @@ public class registarPedido extends HttpServlet {
                 cliente.setApelido(""+request.getParameter("apelidoC"));
                 cliente.setEmail(""+request.getParameter("emailC"));
                 cliente.setMorada(""+request.getParameter("moradaC"));
+                Cliente_dao.setCliente(cliente);
                 response.sendRedirect("index.htm");
             }
     }

@@ -17,7 +17,7 @@ import model.entity.Prato;
  * @author CUINIC4
  */
 public class Prato_dao {
-    private Connection con;
+    private static Connection con;
     private static Prato prato;
     
     public Prato_dao(){
@@ -32,6 +32,34 @@ public class Prato_dao {
         try{
             PreparedStatement stmt=con.prepareStatement(select);
             stmt.setString(1, cat);
+            ResultSet rs=stmt.executeQuery();
+            while(rs.next()){
+                prato=new Prato();
+                prato.setIdprato(Integer.parseInt(rs.getString("idprato")));
+                prato.setNome(rs.getString("nome"));
+                prato.setPreco(Double.parseDouble(rs.getString("preco")));
+                prato.setDescricao(rs.getString("descricao"));
+                prato.setQuantidade(rs.getString("quantidade"));
+                prato.setIngredientes(rs.getString("ingredientes"));
+                prato.setCategoria(rs.getString("categoria"));
+                bds.add(prato);
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+        }catch(SQLException e){
+            System.out.println("Select error: "+e.getMessage());
+            throw new RuntimeException(e);
+        }
+        return bds;
+    }
+    
+    public static ArrayList<Prato> getPratos(){
+        String select="SELECT * FROM dahnani.prato;";
+        ArrayList <Prato>bds=new ArrayList();
+        try{
+            con=new Conexao().getConexao();
+            PreparedStatement stmt=con.prepareStatement(select);
             ResultSet rs=stmt.executeQuery();
             while(rs.next()){
                 prato=new Prato();

@@ -24,8 +24,12 @@ body{
     z-index: 1;
     width:100%;
     height:10%;
-    
     background-color: white ;
+    color:black;
+}
+
+#head {
+    color:black;
 }
 
 #sidebar{
@@ -60,7 +64,7 @@ body{
 }
 
 #menu  > .input >.icon>img{
-    positio:inherit;
+    position:inherit;
     display: box;
     left:10px;
     transform: translateY(20%);
@@ -107,7 +111,9 @@ body{
     top:0px;
     width: 100%;
     height:100%;
-    background-color: red;
+    background-color: #0a3638;
+    color:white;
+    overflow: scroll; 
 }
 #main_vCont{
     position:inherit;
@@ -115,7 +121,7 @@ body{
     top:0px;
     width: 100%;
     height:100%;
-    background-color: green;
+    background-color: #0a3638;
 }
 #main_vProd{
     position:inherit;
@@ -123,8 +129,8 @@ body{
     top:0px;
     width: 100%;
     height:100%;
-    background-color: orange;
-}
+    background-color: #0a3638;
+} 
 
 
 #footer{
@@ -137,13 +143,13 @@ body{
     background-color: slategrey;
     color:white;
     text-align: center;
-    text-height: 15px;
+    text-height: 20px;
 }
-/*#footer > p{
-    position: relative;
-    float:left;
-    left:50%;
-    top:-8px;
-    color:white;
-    text-align: right;
-}*/
+
+#footer > p{
+    position:relative;
+    float:top;
+    left:100px;
+    top:6px;
+    padding-left:30px;
+}

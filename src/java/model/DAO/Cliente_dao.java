@@ -34,7 +34,7 @@ public class Cliente_dao {
             ResultSet rs=stmt.executeQuery();
             while(rs.next()){
                 cliente=new Cliente();
-                cliente.setIdcliente(Integer.parseInt(rs.getString("idbebida")));
+                cliente.setIdcliente((rs.getString("idcliente")));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setApelido(rs.getString("apelido"));
                 cliente.setEmail(rs.getString("email"));
@@ -73,20 +73,121 @@ public class Cliente_dao {
         }
     }
     
+    public static Cliente getClienteByPedido(String idpedido){
+        String select="SELECT * FROM dahnani.pedido p join requisitar_pedido r on r.pedido_idpedido=p.idPedido join cliente c on r.cliente_idcliente=c.idcliente where p.idPedido=? and data=curdate() ;";
+        try{
+            con=new Conexao().getConexao();
+            PreparedStatement stmt=con.prepareStatement(select);
+            stmt.setString(1,idpedido);
+            ResultSet rs=stmt.executeQuery();
+            while(rs.next()){
+                cliente=new Cliente();
+                cliente.setIdcliente((rs.getString("idcliente")));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setApelido(rs.getString("apelido"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setMorada(rs.getString("morada"));
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+        }catch(SQLException e){
+            System.out.println("Select error: "+e.getMessage());
+            throw new RuntimeException(e);
+        }
+        return cliente;
+    }
+    
+    public static Cliente getClienteByMesa(String idmesa,Cliente cli){
+        String select="SELECT * FROM dahnani.pedido p join requisitar_pedido r on r.pedido_idpedido=p.idPedido join cliente c on r.cliente_idcliente=c.idcliente where data=curdate();";
+        try{
+            con=new Conexao().getConexao();
+            PreparedStatement stmt=con.prepareStatement(select);
+            ResultSet rs=stmt.executeQuery();
+            while(rs.next()){
+                cliente=new Cliente();
+                cliente.setIdcliente(rs.getString("c.idcliente"));
+                cliente.setNome(rs.getString("c.nome"));
+                cliente.setApelido(rs.getString("c.apelido"));
+                cliente.setEmail(rs.getString("c.email"));
+                cliente.setMorada(rs.getString("c.morada"));
+                int num=Integer.parseInt(cliente.getIdcliente());
+                if(num<=0){
+                    System.out.println("cli.NOME: "+cli.getNome());
+                    return getClienteByName(cli.getNome(),cli.getEmail());
+                }
+                if(!rs.getString("p.mesa_idmesa").equals(idmesa)){
+                    System.out.println("cli.NOME: "+cli.getNome());
+                    return getClienteByName(cli.getNome(),cli.getEmail());
+                }
+            }
+            
+            rs.close();
+            stmt.close();
+            con.close();
+            System.out.println("dam@: clienteID: "+cliente.getIdcliente());
+            System.out.println("dam@: clienteNome: "+cliente.getNome());
+        }catch(SQLException e){
+            System.out.println("Select error: "+e.getMessage());
+            throw new RuntimeException(e);
+        }catch(NullPointerException f){
+            System.out.println("Falhado man @@@@@@@@@@@@@@@@@@@@");
+            return getClienteByName(cli.getNome(),cli.getEmail());
+        }
+        
+        return cliente;
+    }
+    
+   
+    
+    public static Cliente getClienteByName(String nome, String email){
+        String select="SELECT * FROM dahnani.cliente where nome=? and email=?;";
+        try{
+            con=new Conexao().getConexao();
+            PreparedStatement stmt=con.prepareStatement(select);
+            stmt.setString(1, nome);
+            stmt.setString(2, email);
+            ResultSet rs=stmt.executeQuery();
+            while(rs.next()){
+                cliente=new Cliente();
+                cliente.setIdcliente((rs.getString("idcliente")));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setApelido(rs.getString("apelido"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setMorada(rs.getString("morada"));
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+        }catch(NullPointerException f){
+            return cliente;
+        }catch(SQLException e){
+            System.out.println("Select error: "+e.getMessage());
+            throw new RuntimeException(e);
+        }
+        return cliente;
+    }
+    
     public static String getClienteId(String nome, String email){
         con=new Conexao().getConexao();
-        String select="SELECT max(idcliente) FROM dahnani.cliente where nome=? and email=?;";
+        String select="SELECT max(idcliente) as id FROM dahnani.cliente where nome=? and email=?;";
         try{
             PreparedStatement stmt=con.prepareStatement(select);
             stmt.setString(1, nome);
             stmt.setString(2, email);
             ResultSet rs=stmt.executeQuery();
             while(rs.next()){
-                return rs.getString("idcliente");
+                if(!rs.getString("id").equals("null")){
+                    return rs.getString("id");
+                } else {
+                    return "-1";
+                }
             }
             rs.close();
             stmt.close();
             con.close();
+        }catch(NullPointerException f){
+            return "-1";
         }catch(SQLException e){
             System.out.println("Select error: "+e.getMessage());
             throw new RuntimeException(e);

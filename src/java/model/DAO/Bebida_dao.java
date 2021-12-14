@@ -27,7 +27,7 @@ public class Bebida_dao {
         bebida.setNome("null");
     }
     
-    public ArrayList<Bebida> getBebidas(){
+    public  ArrayList<Bebida> getBebidas(){
         String select="SELECT * FROM dahnani.bebida;";
         ArrayList <Bebida>bds=new ArrayList();
         try{
@@ -53,7 +53,7 @@ public class Bebida_dao {
         return bds;
     }
     
-    public ArrayList<Bebida> getBebidaP(String idpedido){
+    public static ArrayList<Bebida> getBebidaP(String idpedido){
         String select="SELECT * FROM bebida b join pedido p on p.bebida_idbebida=b.idbebida where p.idpedido=? ;";
         ArrayList <Bebida>bds=new ArrayList();
         try{
