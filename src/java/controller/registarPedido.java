@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.DAO.Cliente_dao;
+import model.DAO.Conta_dao;
 import model.DAO.Pedido_dao;
 import model.entity.Bebida;
 import model.entity.Cliente;
@@ -22,7 +23,7 @@ import model.entity.Cliente;
  * @author CUINIC4
  */
 
-@WebServlet(urlPatterns={"/bebida","/sobremesa","/prato","/cliente"})
+@WebServlet(urlPatterns={"/bebida","/sobremesa","/prato","/cliente","/conta"})
 public class registarPedido extends HttpServlet {
      static Cliente cliente=new Cliente("comum");
     /**
@@ -67,6 +68,11 @@ public class registarPedido extends HttpServlet {
                 cliente.setEmail(""+request.getParameter("emailC"));
                 cliente.setMorada(""+request.getParameter("moradaC"));
                 Cliente_dao.setCliente(cliente);
+                response.sendRedirect("index.htm");
+            }
+            else if(request.getRequestURI().contains("conta")){
+                System.out.println("Parameter: 33333333333333333333333333333333333333333333333333333333333333333333333"+request.getParameter("id"));
+                Conta_dao.fecharConta(request.getParameter("id"));
                 response.sendRedirect("index.htm");
             }
     }

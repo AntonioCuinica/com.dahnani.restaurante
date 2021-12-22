@@ -103,7 +103,7 @@
         <div id="mainbody">
             <div class="mainbody" id="main_vPed">
                    <h1 class="ptitle">Pedidos</h1>
-                   <table class="verTab">
+                   <table class="verTab"> 
                        <tr class="row1">
                            <th class="row1">Numero</th>
                            <th class="row1">Mesa</th>
@@ -201,9 +201,14 @@
                                         <td><%=b.getClienteId()%></td>
                                         <td><%=b.getGarsonId()%></td>
                                         <td><%=b.getNrPedidos()%></td>
-                                        <td><%=b.getPrecoTodal()%></td>
+                                        <td><%=b.getPrecoTotal()%></td>
                                         <td><%=b.getEstado()%></td>
-                                        <td><button class="fechar" onclick="logoutCancel()">fechar</button></td>
+                                        <td>
+                                            <form action="conta" method="POST">
+                                                <input type="text" style="display:none;" name="id" value="<%=b.getIdconta()%>">
+                                                <input type="submit" value="fechar" class="fechar" >
+                                            </form>
+                                        </td>
                                     </tr>
                         <%}
                             }

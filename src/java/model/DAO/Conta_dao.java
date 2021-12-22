@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.entity.Bebida;
 import model.entity.Conta;
 
 /**
@@ -20,6 +19,8 @@ import model.entity.Conta;
 public class Conta_dao {
     private static Connection con;
     private static Conta conta;
+
+   
     
     public Conta_dao(){
         this.con=new Conexao().getConexao();
@@ -39,7 +40,7 @@ public class Conta_dao {
                 conta.setEstado(rs.getString("estado"));
                 conta.setIdconta(rs.getString("idconta"));
                 conta.setNrPedidos(rs.getString("nrPedidos"));
-                conta.setPrecoTodal(rs.getString("precoTotal"));
+                conta.setPrecoTotal(rs.getString("precoTotal"));
                 conta.setPedidoId(rs.getString("requisitar_pedido_idrequisitar_pedido"));
                 conta.setClienteId(rs.getString("requisitar_pedido_cliente_idcliente"));
                 conta.setGarsonId(rs.getString("requisitar_pedido_Garson_idGarson"));
@@ -69,8 +70,10 @@ public class Conta_dao {
                 conta.setEstado(rs.getString("estado"));
                 conta.setIdconta(rs.getString("idconta"));
                 conta.setNrPedidos(rs.getString("nrPedidos"));
-                conta.setPrecoTodal(rs.getString("precoTotal"));
+                conta.setPrecoTotal(rs.getString("precoTotal"));
                 conta.setPedidoId(rs.getString("requisitar_pedido_idrequisitar_pedido"));
+                conta.setClienteId(rs.getString("requisitar_pedido_cliente_idcliente"));
+                conta.setGarsonId(rs.getString("requisitar_pedido_Garson_idGarson"));
                 bds.add(conta);
             }
             rs.close();
@@ -81,5 +84,19 @@ public class Conta_dao {
             throw new RuntimeException(e);
         }
         return bds;
+    }
+    public static void fecharConta(String idconta) {
+        con=new Conexao().getConexao();
+        String select="UPDATE conta SET estado='fechada' WHERE idconta=?;";
+        try{
+            PreparedStatement stmt=con.prepareStatement(select);
+            stmt.setString(1,idconta);
+            stmt.execute();
+            stmt.close();
+            con.close();
+        }catch(SQLException e){
+            System.out.println("Select error: "+e.getMessage());
+            throw new RuntimeException(e);
+        }
     }
 }

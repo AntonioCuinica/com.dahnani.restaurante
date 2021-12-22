@@ -23,7 +23,7 @@ import javax.naming.NamingException;
 public class Conta  {
     private String idconta;
     private String data;
-    private String precoTodal;
+    private String precoTotal;
     private String nrPedidos;
     private String estado;
     private Factura facturaIdfactura;
@@ -65,12 +65,12 @@ public class Conta  {
         this.data = data;
     }
 
-    public String getPrecoTodal() {
-        return precoTodal;
+    public String getPrecoTotal() {
+        return precoTotal;
     }
 
-    public void setPrecoTodal(String precoTodal) {
-        this.precoTodal = precoTodal;
+    public void setPrecoTotal(String precoTotal) {
+        this.precoTotal = precoTotal;
     }
 
     public String getNrPedidos() {
